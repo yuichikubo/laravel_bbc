@@ -1,9 +1,14 @@
 <?php
 
+use Illuminate\Database\Seeder;
+use App\Post;
+use App\Comment;
+use App\Category;
+
 class PostCommentSeeder extends Seeder{
     
     public function run(){
-        $comment = 'この文章はダミーです。文字、の大きさ、時間などの確認に使います。この文章はダミーです。文字、の大きさ、時間などの確認に使います。この文章はダミーです。文字、の大きさ、時間などの確認に使います。この文章はダミーです。文字、の大きさ、時間などの確認に使います。';
+        $content = 'この文章はダミーです。文字、の大きさ、時間などの確認に使います。この文章はダミーです。文字、の大きさ、時間などの確認に使います。この文章はダミーです。文字、の大きさ、時間などの確認に使います。この文章はダミーです。文字、の大きさ、時間などの確認に使います。';
         
         $commentdammy = 'コメントダミーです。';
         
@@ -20,8 +25,19 @@ class PostCommentSeeder extends Seeder{
                 $comment->commenter = '名無しさん';
                 $comment->comment = $commentdammy;
                 
-                // Model(Post.php)
+                // reading Model(Post.php)->comments method
+                $post->comments()->save($comment);
+                $post->increment('comment_count');
             }
         }
+        
+        //add category
+        $cat1 = new Category;
+        $cat1->name = "電化製品";
+        $cat1->save();
+        
+        $cat2 = new Category;
+        $cat2->name = "食品";
+        $cat2->save();
     }
 }
