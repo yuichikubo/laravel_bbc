@@ -13,4 +13,9 @@ class PostsController extends Controller
         $posts = Post::all();
         return view('index')->with('posts', $posts);
     }
+    
+    public function show($id){
+        $post = Post::find($id);
+        return view('single')->with('post', $post);
+    }
 }
