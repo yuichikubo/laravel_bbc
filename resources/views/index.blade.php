@@ -10,7 +10,7 @@
 	</h2>
 	<p>カテゴリー：{{ $post->category->name }}</p>
 	<p>{{ $post->content }}</p>
-	<p>{{ url("/bbc/{$post->id}", '続きを読む', array('class' => 'btn btn-primary')) }}</p>
+	<p>{{ link_to("/bbc/{$post->id}", '続きを読む', array('class' => 'btn btn-primary')) }}</p>
 	<p>コメント数：{{ $post->comment_count }}</p>
 	<hr />
 @endforeach
