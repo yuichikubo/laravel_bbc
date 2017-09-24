@@ -15,4 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/create', function () {
+    return view('create');
+});
+
 Route::resource('/bbc', 'PostsController');
+Route::post('/bbcs', 'PostsController@store');
+
+Route::delete('/posts/{post}/comments/{comment}', 'CommentsController@destroy');
+// Route::resource('/comment', 'CommentsController');
+Route::post('/comments', 'CommentsController@store');
+

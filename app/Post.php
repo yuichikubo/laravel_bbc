@@ -9,6 +9,7 @@ class Post extends Model
     public function Comments(){
         //Post has many comments
         return $this->hasMany('App\Comment', 'post_id');
+        
     }
     
     public function Category(){
